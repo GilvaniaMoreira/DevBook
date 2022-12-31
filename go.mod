@@ -7,6 +7,8 @@ require (
 	github.com/gorilla/mux v1.8.0
 )
 
+require github.com/go-sql-driver/mysql v1.7.0 // indirect
+
 require (
 	github.com/cilium/ebpf v0.7.0 // indirect
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
