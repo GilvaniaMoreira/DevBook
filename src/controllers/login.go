@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"api/src/autenticacao"
 	"api/src/banco"
 	"api/src/modelos"
 	"api/src/repositorios"
@@ -10,7 +9,6 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
-	"strconv"
 )
 
 // Login é responsável por autenticar um usuário na API
@@ -46,13 +44,14 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	token, erro := autenticacao.CriarToken(usuarioSalvoNoBanco.ID)
-	if erro != nil {
-		respostas.Erro(w, http.StatusInternalServerError, erro)
-		return
-	}
+	// token, erro := autenticacao.CriarToken(usuarioSalvoNoBanco.ID)
+	// if erro != nil {
+	// 	respostas.Erro(w, http.StatusInternalServerError, erro)
+	// 	return
+	// }
 
-	usuarioID := strconv.FormatUint(usuarioSalvoNoBanco.ID, 10)
+	// usuarioID := strconv.FormatUint(usuarioSalvoNoBanco.ID, 10)
 
-	respostas.JSON(w, http.StatusOK, modelos.DadosAutenticacao{ID: usuarioID, Token: token})
+	w.Write([]byte("você está logado! Parabéns!"))
+	//respostas.JSON(w, http.StatusOK, modelos.DadosAutenticacao{ID: usuarioID, Token: token})
 }
